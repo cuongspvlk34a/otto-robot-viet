@@ -1,0 +1,83 @@
+name: Báo lỗi
+description: Báo lỗi build, flash, hoặc runtime
+labels: ['bug']
+body:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Kiểm tra trước khi gửi
+      options:
+        - label: Tôi đã đọc README và lỗi không được đề cập ở đó.
+          required: true
+        - label: Tôi đã cập nhật lên commit mới nhất và lỗi vẫn còn.
+          required: true
+        - label: Tôi đã tìm kiếm Issues và chưa có issue tương tự.
+          required: true
+
+  - type: input
+    id: firmware_version
+    attributes:
+      label: Phiên bản firmware
+      description: Chạy `git describe --tags` trong thư mục project
+      placeholder: "ví dụ: v1.2.0-5-gabcd123"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Hệ điều hành
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - macOS
+    validations:
+      required: true
+
+  - type: dropdown
+    id: idf_version
+    attributes:
+      label: Phiên bản ESP-IDF
+      options:
+        - "5.5.3"
+        - Khác (ghi rõ bên dưới)
+    validations:
+      required: true
+
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Phần cứng
+      description: Module ESP32-S3 nào? Servo, micro, loa kết nối thế nào?
+      placeholder: "ví dụ: ESP32-S3-DevKitC-1 N16R8, INMP441 I2S, SG90 x4, MAX98357A"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Mô tả lỗi
+      description: Lỗi xảy ra khi nào? Làm gì thì bị?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log Serial / Error message
+      description: Copy toàn bộ log từ `idf.py monitor`
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Các bước tái hiện lỗi
+      placeholder: |
+        1. Build với lệnh ...
+        2. Flash vào board ...
+        3. Lỗi xuất hiện khi ...
+    validations:
+      required: true

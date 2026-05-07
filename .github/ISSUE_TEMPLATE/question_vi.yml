@@ -1,0 +1,22 @@
+name: Câu hỏi
+description: Hỏi về cách dùng, build, cấu hình
+labels: ['question']
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Câu hỏi của bạn
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: Bạn đã thử những gì?
+      description: Mô tả các bước bạn đã thử trước khi hỏi
+
+  - type: input
+    id: hardware
+    attributes:
+      label: Phần cứng (nếu liên quan)
+      placeholder: "ví dụ: ESP32-S3-DevKitC-1"
